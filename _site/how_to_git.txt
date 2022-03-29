@@ -1,0 +1,500 @@
+   91  ls
+   92  ls
+   93  ll
+   94  . ~/.profile
+   95  ll
+   96  ls
+   97  ls
+   98  vim ~/.profile
+   99  ls
+  100  vim ~/.profile
+  101  bash ~/.profile
+  102  ll
+  103  ls
+  104  vim ~/.profile
+  105  bash ~/.profile
+  106  ls
+  107  ls
+  108  ll
+  109  . ~/.profile
+  110  ll
+  111  ls
+  112  ls
+  113  vim ~/.profile
+  114  ls
+  115  vim ~/.profile
+  116  bash ~/.profile
+  117  ll
+  118  ls
+  119  vim ~/.profile
+  120  bash ~/.profile
+  121  ls
+  122  ls
+  123  ll
+  124  . ~/.profile
+  125  ll
+  126  ls
+  127  ls
+  128  vim ~/.profile
+  129  ls
+  130  vim ~/.profile
+  131  bash ~/.profile
+  132  ll
+  133  ls
+  134  vim ~/.profile
+  135  bash ~/.profile
+  136  ls
+  137  ls
+  138  ll
+  139  . ~/.profile
+  140  ll
+  141  ls
+  142  ls
+  143  vim ~/.profile
+  144  ls
+  145  vim ~/.profile
+  146  bash ~/.profile
+  147  ll
+  148  ls
+  149  vim ~/.profile
+  150  bash ~/.profile
+  151  ls
+  152  ls
+  153  ll
+  154  . ~/.profile
+  155  ll
+  156  ls
+  157  ls
+  158  vim ~/.profile
+  159  ls
+  160  vim ~/.profile
+  161  bash ~/.profile
+  162  ll
+  163  ls
+  164  vim ~/.profile
+  165  bash ~/.profile
+  166  ls
+  167  ls
+  168  ll
+  169  . ~/.profile
+  170  ll
+  171  ls
+  172  ls
+  173  vim ~/.profile
+  174  ls
+  175  vim ~/.profile
+  176  bash ~/.profile
+  177  ll
+  178  ls
+  179  vim ~/.profile
+  180  bash ~/.profile
+  181  ls
+  182  ls
+  183  ll
+  184  . ~/.profile
+  185  ll
+  186  ls
+  187  ls
+  188  vim ~/.profile
+  189  ls
+  190  vim ~/.profile
+  191  bash ~/.profile
+  192  ll
+  193  ls
+  194  vim ~/.profile
+  195  bash ~/.profile
+  196  ls
+  197  ls
+  198  ll
+  199  . ~/.profile
+  200  ll
+  201  ls
+  202  ls
+  203  vim ~/.profile
+  204  ls
+  205  vim ~/.profile
+  206  bash ~/.profile
+  207  ll
+  208  ls
+  209  vim ~/.profile
+  210  bash ~/.profile
+  211  ls
+  212  ls
+  213  ll
+  214  . ~/.profile
+  215  ll
+  216  ls
+  217  ls
+  218  vim ~/.profile
+  219  ls
+  220  vim ~/.profile
+  221  bash ~/.profile
+  222  ll
+  223  ls
+  224  vim ~/.profile
+  225  bash ~/.profile
+  226  ls
+  227  ls
+  228  ll
+  229  . ~/.profile
+  230  ls
+  231  ls
+  232  ll
+  233  vim ~/.profile
+  234  ll
+  235  ls
+  236  vim ~/.profile
+  237  source ~/.bashrc
+  238  ls
+  239  ll
+  240  ls
+  241  ls
+  242  vim ~/.profile
+  243  ll
+  244  ls
+  245  ls
+  246  vim ~/.profile
+  247  cat /bin/shell
+  248  cat /bin/vash
+  249  cat /bin/bash
+  250  1;2c:q
+  251  cat /etc/shells
+  252  cat /bin/ls 
+  253  ls
+  254  vim ~/.profile
+  255  vim ~/.bashrc 
+  256  vim ~/.bash_profile 
+  257  vim ~/.bashrc 
+  258  ls
+  259  ls
+  260  ll
+  261  lxplus
+  262  vim ~/.ssh/config
+  263  vim ~/.ssh/config
+  264  vim ~/.ssh/config
+  265  pwd ~/.ssh/config
+  266  vim ~/.ssh/config
+  267  os
+  268  which
+  269  which os
+  270  ls
+  271  cd ll
+  272  ll
+  273  cd analysis/
+  274  ll
+  275  unix
+  276  vim ~/.ssh/known_hosts
+  277  which python
+  278  which python3
+  279  python
+  280  python3
+  281  python3 --version
+  282  lxplus
+  283  lxplus
+  284  ucaf
+  285  ucaf
+  286  ucaf
+  287  ucaf
+  288  lxplus
+  289  lxplus
+  290  lxplus
+  291  pwd
+  292  cd ../NIU_ATLAS/
+  293  ll
+  294  ucaf
+  295  lxplus
+  296  lxplus
+  297  lxplus
+  298  pwd
+  299  ll
+  300  cd readthedocs_repository/
+  301  ll
+  302  mkdos
+  303  mkdocs
+  304  cd ..
+  305  ll
+  306  mkdir readthedocs_repository2
+  307  python3 -m pip install mkdocs mkdocs-include-markdown-plugin
+  308  python3 -m pip install mkdocs 
+  309  python -m pip install mkdocs mkdocs-include-markdown-plugin
+  310  cd readthedocs_repository
+  311  git rev-parse --show-toplevel 
+  312  mkdocs serve
+  313  /usr/bin/python3
+  314  wich python3
+  315  which python3
+  316  uninstall
+  317  sudo uninstall python2.7
+  318  ll
+  319  cd AFdocs/
+  320  ll
+  321  cat WorkingNotes.md 
+  322  vim mkdocs.yml 
+  323  ll
+  324  mkdocs
+  325  vim requirements.txt 
+  326  which python
+  327  which python3
+  328  rm rf /Library/Frameworks/Python.framework/Versions/3.6/
+  329  rm -rf /Library/Frameworks/Python.framework/Versions/3.6/
+  330  sudo rm -rf /Library/Frameworks/Python.framework/Versions/3.6/
+  331  which python3
+  332  mkdocs
+  333  clear
+  334  ssh -K ch16electronic@oscura.dhcp.fnal.gov -o GSSAPIServerIdentity=oscura.fnal.gov
+  335  vim /etc/ssh/ssh_config
+  336  vim /bin/ssh/ssh_config
+  337  vim /etc/ssh/ssh_config.d/
+  338  vim /etc/ssh/sshd_config
+  339  vim /etc/ssh/ssh_config/
+  340  vim /etc/ssh/ssh_config
+  341  vim /usr/bin
+  342  vim /etc/ssh/sshd_config
+  343  ssh -vvv
+  344  vim ~/.ssh/config
+  345  lxplus
+  346  lxplus
+  347  lxplus
+  348  ucaf
+  349  ll
+  350  cd NIU_ATLAS/analysis_facilities/
+  351  ll
+  352  cd ../readthedocs_repository
+  353  ll
+  354  cd AFdocs/
+  355  mkdocs
+  356  cd ..
+  357  mkdocs
+  358  mkdocs version
+  359  pip list | grep mkdocs
+  360  python3
+  361  python3 -m pip intstall mkdocs
+  362  python3 -m pip install mkdocs
+  363  mkdocs
+  364  pip uninstall mkdocs
+  365  mkdocs
+  366  vim ~/.mkshrc 
+  367  sudo apt-get remove --auto-remove mkdocs
+  368  mkdocs serve
+  369  sudo remove --auto-remove mkdocs
+  370  ssh -K ch16electronic@oscura.dhcp.fnal.gov -o GSSAPIServerIdentity=oscura.fnal.gov
+  371  vim ~/.ssh/config
+  372  vim ~/.ssh/config
+  373  ssh -K ch16electronic@oscura.dhcp.fnal.gov -o GSSAPIServerIdentity=oscura.fnal.gov
+  374  vim ~/.ssh/config
+  375  vim /etc/ssh/ssh_config
+  376  vim /etc/ssh/ssh_config
+  377  vim ~/.ssh/config
+  378  ssh -K ch16electronic@oscura.dhcp.fnal.gov -o GSSAPIServerIdentity=oscura.fnal.gov
+  379  vim ~/.ssh/config
+  380  root -l
+  381  pwd
+  382  cd NIU_ATLAS/
+  383  ls
+  384  ll
+  385  cd ATLAS_sw_Tutorial/
+  386  ll
+  387  cd day01/
+  388  ll
+  389  cd ../lxplus/
+  390  ll
+  391  scp madurano@lxplus.cern.ch:/afs/cern.ch/user/m/madurano/atlas_software_tutorial/ROOTAnalysisTutorial/build/submitDir/* .
+  392  scp -rf madurano@lxplus.cern.ch:/afs/cern.ch/user/m/madurano/atlas_software_tutorial/ROOTAnalysisTutorial/build/submitDir/* .
+  393  scp -r madurano@lxplus.cern.ch:/afs/cern.ch/user/m/madurano/atlas_software_tutorial/ROOTAnalysisTutorial/build/submitDir/* .
+  394  ll
+  395  du -sh
+  396  cd data-ANALYSIS/
+  397  ll
+  398  root -l mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_PHYS.e6337_s3126_r10201_p4172.root 
+  399  root -l mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_PHYS.e6337_s3126_r10201_p4172.root 
+  400  root -l mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_PHYS.e6337_s3126_r10201_p4172.root 
+  401  ll
+  402  cd ..
+  403  ll
+  404  root -l driver.root 
+  405  du -sh driver.root 
+  406  cd hist
+  407  ll
+  408  root -l mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_PHYS.e6337_s3126_r10201_p4172.root 
+  409  ll
+  410  cd ../
+  411  ll
+  412  root -l hist-mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_PHYS.e6337_s3126_r10201_p4172.root 
+  413  lxplus
+  414  lxplus
+  415  lxplus
+  416  lxplus
+  417  lxplus
+  418  ucaf
+  419  pwd
+  420  cd NIU_ATLAS/
+  421  cd ..
+  422  ll
+  423  mv NIU_ATLAS/ niu_atlas
+  424  cd niu_atlas/
+  425  ll
+  426  cd analysis_facilities/
+  427  ll
+  428  mv UChicago_AF/ uchicago_af
+  429  ll uchicago_af/
+  430  cd ..
+  431  ll
+  432  cd readthedocs_repository
+  433  ll
+  434  mkdocs
+  435  cd AFdocs/
+  436  mkdocs
+  437  pip list
+  438  pyt -h
+  439  py -h
+  440  mkdocs --version
+  441  python --version
+  442  pip --version
+  443  pip uninstall pip
+  444  ~/Library/Caches/pip
+  445  pip uninstall pip
+  446  vim ~/Library/Caches/pip/selfcheck/d08389b47034140b80ff01e8adcefb6a203bb1bdebc145a58cf47e71 
+  447  sudo rm -rf /Library/Frameworks/Python.framework
+  448  sudo rm -rf "/Applications/Python 2.7"
+  449  cd /usr/local/bin/
+  450  vim ~/.bash_profile 
+  451  vim ~/.bashrc 
+  452  ls ~/.anaconda/
+  453  rm -rf ~/.anaconda/
+  454  python --version
+  455  which python
+  456  which pip
+  457  python3 -m pip install mkdocs
+  458  /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -m pip install --upgrade pip
+  459  pwd
+  460  cd
+  461  pwd
+  462   cd niu_atlas/readthedocs_repository
+  463  ll
+  464  git rev-parse --show-toplevel
+  465  mkdocs serve
+  466  mkdocs serve
+  467  vim ~/.bashrc 
+  468  1. python3 -m pip install mkdocs mkdocs-include-markdown-plugin
+  469  python3 -m pip install mkdocs mkdocs-include-markdown-plugin
+  470  mkdocs serve
+  471  vim ~/.profil
+  472  vim ~/.profile
+  473  vim ~/.bash_profile 
+  474  vim ~/.profile
+  475  mkdocs serve
+  476  vim ~/.bash_profile 
+  477  vim ~/.profile
+  478  vim ~/.bash_profile 
+  479  vim ~/.bashrc 
+  480  vim ~/.bash_profile 
+  481  vim ~/.profile
+  482  source ~/.profile
+  483  mkdocs
+  484  source ~/.profile
+  485  vim ~/.profile
+  486  vim ~/.bash_profile 
+  487  source ~/.bash_profile 
+  488  mkdocs
+  489  mkdocs
+  490  mkdocs serve
+  491  pwd
+  492  cd niu_atlas/readthedocs_repository
+  493  ll
+  494  mkdocs
+  495  vim ~/.bash_profile 
+  496  mkdocs
+  497  vim ~/.bash_profile 
+  498  vim ~/.profile
+  499  source ~/.profile
+  500  mkdocs
+  501  pwd
+  502  history
+  503  history | grep "python3"
+  504  clear
+  505  history | grep "python3"
+  506  pwd
+  507  cd niu_atlas/analysis_facilities/uchicago_af/
+  508  ll
+  509  cd 2022-04-usatlas_af_quickstart_tutorial/
+  510  git init
+  511  ll
+  512  ll -a
+  513  vim .git
+  514  ll .git
+  515  rm -rf .git/
+  516  git pull
+  517  git pull https://github.com/Cecilia-Duran/2022-04-usatlas_af_quickstart_tutorial
+  518  ll
+  519  ll 2022-04-usatlas_af_quickstart_tutorial/
+  520  git init
+  521  ll
+  522  git
+  523  git branch
+  524  git -version
+  525  git commit -m "first commit"
+  526  git remote add origin https://github.com/Cecilia-Duran/2022-04-usatlas_af_quickstart_tutorial
+  527  git remote add origin https://github.com/Cecilia-Duran/2022-04-usatlas_afuc_quickstart_tutorial
+  528  git push origin -u origin main
+  529  git push origin -u https://github.com/Cecilia-Duran/2022-04-usatlas_af_quickstart_tutorial main
+  530  git push origin -u https://github.com/Cecilia-Duran/2022-04-usatlas_afuc_quickstart_tutorial main
+  531  ll -a
+  532  rm -rf .git/
+  533  git push origin -u https://github.com/Cecilia-Duran/quickstart_tutorial main
+  534  git push origin -u main https://github.com/Cecilia-Duran/quickstart_tutorial
+  535  ll -a
+  536  cd ..
+  537  ll
+  538  ll quickstart_tutorial
+  539  cd 2022-04-usatlas_af_quickstart_tutorial/
+  540  ll
+  541  git init
+  542  git push
+  543  git remote add 2022-04-usatlas_af_quickstart_tutorial https://github.com/Cecilia-Duran/quickstart_tutorial
+  544  git push 2022-04-usatlas_af_quickstart_tutorial
+  545  cd ..
+  546  ll
+  547  git clone https://github.com/Cecilia-Duran/quickstart_tutorial
+  548  ll quickstart_tutorial
+  549  rm -rf quickstart_tutorial
+  550  ll
+  551  git clone https://github.com/Cecilia-Duran/quickstart_tutorial
+  552  ll
+  553  git push 2022-04-usatlas_af_quickstart_tutorial https://github.com/Cecilia-Duran/quickstart_tutorial
+  554  cd 2022-04-usatlas_af_quickstart_tutorial/
+  555  ll
+  556  git push 2022-04-usatlas_af_quickstart_tutorial https://github.com/Cecilia-Duran/quickstart_tutorial
+  557  git init
+  558  git push 2022-04-usatlas_af_quickstart_tutorial https://github.com/Cecilia-Duran/quickstart_tutorial
+  559  cd ..
+  560  git push 2022-04-usatlas_af_quickstart_tutorial https://github.com/Cecilia-Duran/quickstart_tutorial
+  561  git pull https://github.com/Cecilia-Duran/quickstart_tutorial
+  562  ll
+  563  ll -a 2022-04-usatlas_af_quickstart_tutorial/
+  564  cd 2022-04-usatlas_af_quickstart_tutorial/
+  565  git add .
+  566  git commit -m "first commit"
+  567  git remote add origin https://github.com/Cecilia-Duran/quickstart_tutorial
+  568  git remote -v
+  569  git push origin master
+  570  git push -u origin master
+  571  vim .git/config 
+  572  vim .git/config 
+  573  git remote -v
+  574  git remote set-url origin git@github.com:Cecilia-Duran/2022-04-usatlas_af_quickstart_tutorial.git
+  575  git push -u origin master
+  576  git remote set-url origin git@github.com:Cecilia-Duran/quickstart_tutorial.git
+  577  git push -u origin master
+  578  git remote set-url origin git@github.com:Cecilia-Duran/quickstart_tutorial.git
+  579  git push -u origin master
+  580  vim ~/.ssh/id_rsa.pub 
+  581  vim ~/.ssh/id_rsa
+  582  vim ~/.ssh/id_rsa.pub 
+  583  cat ~/.ssh/id_rsa.pub 
+  584  cat ~/.ssh/id_rsa.pub 
+  585  git push -u origin master
+  586  git push -u origin master
+  587  git push -u origin master
+  588  git push -u origin master
+  589  make serve
+  590  history > how_to_git.txt
