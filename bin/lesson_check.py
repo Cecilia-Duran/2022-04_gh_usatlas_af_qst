@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 Check lesson files and their contents.
 """
@@ -6,13 +8,10 @@ Check lesson files and their contents.
 import os
 import glob
 import re
-import sys
 from argparse import ArgumentParser
 
-# This uses the `__all__` list in `util.py` to determine what objects to import
-# see https://docs.python.org/3/tutorial/modules.html#importing-from-a-package
-from util import *
-from reporter import Reporter
+from util import (Reporter, read_markdown, load_yaml, check_unwanted_files,
+                  require)
 
 __version__ = '0.3'
 
@@ -30,19 +29,19 @@ SOURCE_RMD_DIRS = ['_episodes_rmd']
 # specially. This list must include all the Markdown files listed in the
 # 'bin/initialize' script.
 REQUIRED_FILES = {
-    'CODE_OF_CONDUCT.md': True,
-    'CONTRIBUTING.md': False,
-    'LICENSE.md': True,
-    'README.md': False,
-    os.path.join('_extras', 'discuss.md'): True,
-    os.path.join('_extras', 'guide.md'): True,
-    'index.md': True,
-    'reference.md': True,
-    'setup.md': True,
+    '%/CODE_OF_CONDUCT.md': True,
+    '%/CONTRIBUTING.md': False,
+    '%/LICENSE.md': True,
+    '%/README.md': False,
+    '%/_extras/discuss.md': True,
+    '%/_extras/guide.md': True,
+    '%/index.md': True,
+    '%/reference.md': True,
+    '%/setup.md': True,
 }
 
 # Episode filename pattern.
-P_EPISODE_FILENAME = re.compile(r'(\d\d)-[-\w]+.md$')
+P_EPISODE_FILENAME = re.compile(r'/_episodes/(\d\d)-[-\w]+.md$')
 
 # Pattern to match lines ending with whitespace.
 P_TRAILING_WHITESPACE = re.compile(r'\s+$')
@@ -56,27 +55,9 @@ P_INTERNAL_LINK_REF = re.compile(r'\[([^\]]+)\]\[([^\]]+)\]')
 # Pattern to match reference links (to resolve internally-defined references).
 P_INTERNAL_LINK_DEF = re.compile(r'^\[([^\]]+)\]:\s*(.+)')
 
-# Pattern to match {% include ... %} statements
-P_INTERNAL_INCLUDE_LINK = re.compile(r'^{% include ([^ ]*) %}$')
-
-# Pattern to match image-only and link-only lines
-P_LINK_IMAGE_LINE = re.compile(r'''
-    [> #]*        # any number of '>', '#', and spaces
-    \W{,3}        # up to 3 non-word characters
-    !?            # ! or nothing
-    \[[^]]+\]     # [any text]
-    [([]          # ( or [
-    [^])]+        # 1+ characters that are neither ] nor )
-    [])]          # ] or )
-    (?:{:[^}]+})? # {:any text} or nothing
-    \W{,3}        # up to 3 non-word characters
-    [ ]*          # any number of spaces
-    \\?$          # \ or nothing + end of line''', re.VERBOSE)
-
 # What kinds of blockquotes are allowed?
 KNOWN_BLOCKQUOTES = {
     'callout',
-    'caution',
     'challenge',
     'checklist',
     'discussion',
@@ -85,17 +66,22 @@ KNOWN_BLOCKQUOTES = {
     'prereq',
     'quotation',
     'solution',
-    'testimonial',
-    'warning'
+    'testimonial'
 }
 
 # What kinds of code fragments are allowed?
-# Below we allow all 'language-*' code blocks
 KNOWN_CODEBLOCKS = {
     'error',
     'output',
     'source',
-    'warning'
+    'language-bash',
+    'html',
+    'language-make',
+    'language-matlab',
+    'language-python',
+    'language-r',
+    'language-shell',
+    'language-sql'
 }
 
 # What fields are required in teaching episode metadata?
@@ -116,31 +102,16 @@ BREAK_METADATA_FIELDS = {
 }
 
 # How long are lines allowed to be?
-# Please keep this in sync with .editorconfig!
 MAX_LINE_LEN = 100
 
-# Contents of _config.yml
-CONFIG = {}
 
 def main():
     """Main driver."""
 
     args = parse_args()
     args.reporter = Reporter()
-
-    global CONFIG
-    config_file = os.path.join(args.source_dir, '_config.yml')
-    CONFIG = load_yaml(config_file)
-    CONFIG["config_file"] = config_file
-
-    life_cycle = CONFIG.get('life_cycle', None)
-    # pre-alpha lessons should report without error
-    if life_cycle == "pre-alpha":
-        args.permissive = True
-
-    check_config(args.reporter)
+    check_config(args.reporter, args.source_dir)
     check_source_rmd(args.reporter, args.source_dir, args.parser)
-
     args.references = read_references(args.reporter, args.reference_path)
 
     docs = read_all_markdown(args.source_dir, args.parser)
@@ -151,16 +122,8 @@ def main():
         checker.check()
 
     args.reporter.report()
-    if args.reporter.messages:
-        if args.permissive:
-            print("Problems detected but ignored (permissive mode).")
-        else:
-            print("Problems detected.")
-            sys.exit(1)
-    else:
-        print("No problems found.")
-
-    return
+    if args.reporter.messages and not args.permissive:
+        exit(1)
 
 
 def parse_args():
@@ -197,35 +160,33 @@ def parse_args():
 
     args, extras = parser.parse_known_args()
     require(args.parser is not None,
-            'Path to Markdown parser not provided',
-            True)
+            'Path to Markdown parser not provided')
     require(not extras,
             'Unexpected trailing command-line arguments "{0}"'.format(extras))
 
     return args
 
-def check_config(reporter):
+
+def check_config(reporter, source_dir):
     """Check configuration file."""
 
-    reporter.check_field(CONFIG["config_file"], 'configuration',
-                         CONFIG, 'kind', 'lesson')
-    reporter.check_field(CONFIG["config_file"], 'configuration',
-                         CONFIG, 'carpentry', ('swc', 'dc', 'lc', 'cp', 'incubator'))
-    reporter.check_field(CONFIG["config_file"], 'configuration', CONFIG, 'title')
-    reporter.check_field(CONFIG["config_file"], 'configuration', CONFIG, 'email')
+    config_file = os.path.join(source_dir, '_config.yml')
+    config = load_yaml(config_file)
+    reporter.check_field(config_file, 'configuration',
+                         config, 'kind', 'lesson')
+    reporter.check_field(config_file, 'configuration',
+                         config, 'carpentry', ('swc', 'dc', 'lc', 'cp'))
+    reporter.check_field(config_file, 'configuration', config, 'title')
+    reporter.check_field(config_file, 'configuration', config, 'email')
 
     for defaults in [
             {'values': {'root': '.', 'layout': 'page'}},
             {'values': {'root': '..', 'layout': 'episode'}, 'scope': {'type': 'episodes', 'path': ''}},
             {'values': {'root': '..', 'layout': 'page'}, 'scope': {'type': 'extras', 'path': ''}}
             ]:
-        error_text = 'incorrect settings for: root "{0}" layout "{1}"'
-        root = defaults["values"]["root"]
-        layout = defaults["values"]["layout"]
-        error_message = error_text.format(root, layout)
-
-        defaults_test = defaults in CONFIG.get('defaults', [])
-        reporter.check(defaults_test, 'configuration', error_message)
+        reporter.check(defaults in config.get('defaults', []),
+                   'configuration',
+                   '"root" not set to "." in configuration')
 
 def check_source_rmd(reporter, source_dir, parser):
     """Check that Rmd episode files include `source: Rmd`"""
@@ -246,57 +207,29 @@ def read_references(reporter, ref_path):
     {symbolic_name : URL}
     """
 
-    if 'remote_theme' in CONFIG:
-        return {}
-
-    if not ref_path:
-        raise Warning("No filename has been provided.")
-
     result = {}
     urls_seen = set()
-
-    with open(ref_path, 'r', encoding='utf-8') as reader:
-        for (num, line) in enumerate(reader, 1):
-
-            # Skip empty lines
-            if len(line.strip()) == 0:
-                continue
-
-            # Skip HTML comments
-            if line.strip().startswith("<!--") and line.strip().endswith("-->"):
-                   continue
-
-            # Skip Liquid's {% include ... %} lines
-            if P_INTERNAL_INCLUDE_LINK.search(line):
-                continue
-
-            m = P_INTERNAL_LINK_DEF.search(line)
-
-            message = '{}: {} not a valid reference: {}'
-            require(m, message.format(ref_path, num, line.rstrip()))
-
-            name = m.group(1)
-            url = m.group(2)
-
-            message = 'Empty reference at {0}:{1}'
-            require(name, message.format(ref_path, num))
-
-            unique_name = name not in result
-            unique_url = url not in urls_seen
-
-            reporter.check(unique_name,
-                           ref_path,
-                           'Duplicate reference name {0} at line {1}',
-                           name, num)
-
-            reporter.check(unique_url,
-                           ref_path,
-                           'Duplicate definition of URL {0} at line {1}',
-                           url, num)
-
-            result[name] = url
-            urls_seen.add(url)
-
+    if ref_path:
+        with open(ref_path, 'r') as reader:
+            for (num, line) in enumerate(reader):
+                line_num = num + 1
+                m = P_INTERNAL_LINK_DEF.search(line)
+                require(m,
+                        '{0}:{1} not valid reference:\n{2}'.format(ref_path, line_num, line.rstrip()))
+                name = m.group(1)
+                url = m.group(2)
+                require(name,
+                        'Empty reference at {0}:{1}'.format(ref_path, line_num))
+                reporter.check(name not in result,
+                               ref_path,
+                               'Duplicate reference {0} at line {1}',
+                               name, line_num)
+                reporter.check(url not in urls_seen,
+                               ref_path,
+                               'Duplicate definition of URL {0} at line {1}',
+                               url, line_num)
+                result[name] = url
+                urls_seen.add(url)
     return result
 
 
@@ -320,7 +253,7 @@ def check_fileset(source_dir, reporter, filenames_present):
     """Are all required files present? Are extraneous files present?"""
 
     # Check files with predictable names.
-    required = [os.path.join(source_dir, p) for p in REQUIRED_FILES]
+    required = [p.replace('%', source_dir) for p in REQUIRED_FILES]
     missing = set(required) - set(filenames_present)
     for m in missing:
         reporter.add(None, 'Missing required file {0}', m)
@@ -330,10 +263,7 @@ def check_fileset(source_dir, reporter, filenames_present):
     for filename in filenames_present:
         if '_episodes' not in filename:
             continue
-
-        # split path to check episode name
-        base_name = os.path.basename(filename)
-        m = P_EPISODE_FILENAME.search(base_name)
+        m = P_EPISODE_FILENAME.search(filename)
         if m and m.group(1):
             seen.append(m.group(1))
         else:
@@ -407,19 +337,12 @@ class CheckBase:
         """Check the raw text of the lesson body."""
 
         if self.args.line_lengths:
-            over_limit = []
-
-            for (i, l, n) in self.lines:
-                # Report lines that are longer than the suggested
-                # line length limit only if they're not
-                # link-only or image-only lines.
-                if n > MAX_LINE_LEN and not P_LINK_IMAGE_LINE.match(l):
-                    over_limit.append(i)
-
-            self.reporter.check(not over_limit,
+            over = [i for (i, l, n) in self.lines if (
+                n > MAX_LINE_LEN) and (not l.startswith('!'))]
+            self.reporter.check(not over,
                                 self.filename,
-                                'Line(s) too long: {0}',
-                                ', '.join([str(i) for i in over_limit]))
+                                'Line(s) are too long: {0}',
+                                ', '.join([str(i) for i in over]))
 
     def check_trailing_whitespace(self):
         """Check for whitespace at the ends of lines."""
@@ -447,8 +370,7 @@ class CheckBase:
 
         for node in self.find_all(self.doc, {'type': 'codeblock'}):
             cls = self.get_val(node, 'attr', 'class')
-            self.reporter.check(cls is not None and (cls in KNOWN_CODEBLOCKS or
-                cls.startswith('language-')),
+            self.reporter.check(cls in KNOWN_CODEBLOCKS,
                                 (self.filename, self.get_loc(node)),
                                 'Unknown or missing code block type {0}',
                                 cls)
@@ -578,9 +500,6 @@ class CheckEpisode(CheckBase):
     def check_reference_inclusion(self):
         """Check that links file has been included."""
 
-        if 'remote_theme' in CONFIG:
-            return
-
         if not self.args.reference_path:
             return
 
@@ -618,8 +537,8 @@ CHECKERS = [
     (re.compile(r'README\.md'), CheckNonJekyll),
     (re.compile(r'index\.md'), CheckIndex),
     (re.compile(r'reference\.md'), CheckReference),
-    # '.' below is what's passed on the command line via '-s' flag
-    (re.compile(os.path.join('.','_episodes', '[^/]*\.md')), CheckEpisode),
+    (re.compile(r'_episodes/.*\.md'), CheckEpisode),
+    (re.compile(r'aio\.md'), CheckNonJekyll),
     (re.compile(r'.*\.md'), CheckGeneric)
 ]
 

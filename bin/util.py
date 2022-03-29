@@ -10,12 +10,93 @@ except ImportError:
     print('Unable to import YAML module: please install PyYAML', file=sys.stderr)
     sys.exit(1)
 
-__all__ = ['check_unwanted_files', 'load_yaml', 'read_markdown', 'require']
+
+# Things an image file's name can end with.
+IMAGE_FILE_SUFFIX = {
+    '.gif',
+    '.jpg',
+    '.png',
+    '.svg'
+}
 
 # Files that shouldn't be present.
 UNWANTED_FILES = [
     '.nojekyll'
 ]
+
+# Marker to show that an expected value hasn't been provided.
+# (Can't use 'None' because that might be a legitimate value.)
+REPORTER_NOT_SET = []
+
+
+class Reporter:
+    """Collect and report errors."""
+
+    def __init__(self):
+        """Constructor."""
+        self.messages = []
+
+    def check_field(self, filename, name, values, key, expected=REPORTER_NOT_SET):
+        """Check that a dictionary has an expected value."""
+
+        if key not in values:
+            self.add(filename, '{0} does not contain {1}', name, key)
+        elif expected is REPORTER_NOT_SET:
+            pass
+        elif type(expected) in (tuple, set, list):
+            if values[key] not in expected:
+                self.add(
+                    filename, '{0} {1} value {2} is not in {3}', name, key, values[key], expected)
+        elif values[key] != expected:
+            self.add(filename, '{0} {1} is {2} not {3}',
+                     name, key, values[key], expected)
+
+    def check(self, condition, location, fmt, *args):
+        """Append error if condition not met."""
+
+        if not condition:
+            self.add(location, fmt, *args)
+
+    def add(self, location, fmt, *args):
+        """Append error unilaterally."""
+
+        self.messages.append((location, fmt.format(*args)))
+
+    @staticmethod
+    def pretty(item):
+        location, message = item
+        if isinstance(location, type(None)):
+            return message
+        elif isinstance(location, str):
+            return location + ': ' + message
+        elif isinstance(location, tuple):
+            return '{0}:{1}: '.format(*location) + message
+
+        print('Unknown item "{0}"'.format(item), file=sys.stderr)
+        return NotImplemented
+
+    @staticmethod
+    def key(item):
+        location, message = item
+        if isinstance(location, type(None)):
+            return ('', -1, message)
+        elif isinstance(location, str):
+            return (location, -1, message)
+        elif isinstance(location, tuple):
+            return (location[0], location[1], message)
+
+        print('Unknown item "{0}"'.format(item), file=sys.stderr)
+        return NotImplemented
+
+    def report(self, stream=sys.stdout):
+        """Report all messages in order."""
+
+        if not self.messages:
+            return
+
+        for m in sorted(self.messages, key=self.key):
+            print(self.pretty(m), file=stream)
+
 
 def read_markdown(parser, path):
     """
@@ -24,7 +105,7 @@ def read_markdown(parser, path):
     """
 
     # Split and extract YAML (if present).
-    with open(path, 'r', encoding='utf-8') as reader:
+    with open(path, 'r') as reader:
         body = reader.read()
     metadata_raw, metadata_yaml, body = split_metadata(path, body)
 
@@ -34,9 +115,9 @@ def read_markdown(parser, path):
              for (i, line) in enumerate(body.split('\n'))]
 
     # Parse Markdown.
-    cmd = 'bundle exec ruby {0}'.format(parser)
+    cmd = 'ruby {0}'.format(parser)
     p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE,
-              close_fds=True, universal_newlines=True, encoding='utf-8')
+              close_fds=True, universal_newlines=True)
     stdout_data, stderr_data = p.communicate(body)
     doc = json.loads(stdout_data)
 
@@ -63,10 +144,11 @@ def split_metadata(path, text):
         metadata_raw = pieces[1]
         text = pieces[2]
         try:
-            metadata_yaml = yaml.load(metadata_raw, Loader=yaml.SafeLoader)
+            metadata_yaml = yaml.load(metadata_raw)
         except yaml.YAMLError as e:
-            message = 'Unable to parse YAML header in {0}:\n{1}'
-            print(message.format(path, e), file=sys.stderr)
+            print('Unable to parse YAML header in {0}:\n{1}'.format(
+                path, e), file=sys.stderr)
+            sys.exit(1)
 
     return metadata_raw, metadata_yaml, text
 
@@ -78,16 +160,13 @@ def load_yaml(filename):
     """
 
     try:
-        with open(filename, 'r', encoding='utf-8') as reader:
-            return yaml.load(reader, Loader=yaml.SafeLoader)
-    except yaml.YAMLError as e:
-        message = 'ERROR: Unable to load YAML file {0}:\n{1}'
-        print(message.format(filename, e), file=sys.stderr)
-    except (FileNotFoundError, IOError):
-        message = 'ERROR: File {} not found'
-        print(message.format(filename), file=sys.stderr)
+        with open(filename, 'r') as reader:
+            return yaml.load(reader)
+    except (yaml.YAMLError, IOError) as e:
+        print('Unable to load YAML file {0}:\n{1}'.format(
+            filename, e), file=sys.stderr)
+        sys.exit(1)
 
-    return {}
 
 def check_unwanted_files(dir_path, reporter):
     """
@@ -101,11 +180,9 @@ def check_unwanted_files(dir_path, reporter):
                        "Unwanted file found")
 
 
-def require(condition, message, fatal=False):
+def require(condition, message):
     """Fail if condition not met."""
 
     if not condition:
         print(message, file=sys.stderr)
-
-        if fatal:
-            sys.exit(1)
+        sys.exit(1)
