@@ -3,13 +3,11 @@ title: "Jupyter Lab"
 teaching: 00
 exercises: 00
 questions:
-- "question1"
-- "question2"
+- "What is JupyterLab?"
 objectives:
-- "objectives of jupyterlab"
+- "Learn: number of GPU instances, selecting a Docker image and GPU memory"
 keypoints:
-- " keypoint1 ---=≡Σ((( つ•̀ω•́)つ "
-- " keypoint2 "
+- "Check JupyterLab documentation"
 ---
 
 To support machine learning code development, our users can deploy one or more private JupyterLab applications.
@@ -24,6 +22,8 @@ Users can choose between two images: One with full anaconda (ivukotic/ml_platfor
 Selecting GPU memory
 
 Select 40,836 MB for an entire A100 GPU. Select 4864 MB for a MIG instance.
+
+You can learn more about in its documentation link <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab</a>
 
 {% include links.md %}
 

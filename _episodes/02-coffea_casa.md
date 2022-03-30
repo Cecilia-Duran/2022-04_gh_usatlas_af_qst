@@ -4,14 +4,11 @@ teaching: 5
 exercises: 15
 questions:
 - " What is Coffea Casa? "
-- " question2 "
 objectives:
 - "Learn the prerequisites for using Coffea Casa"
-- "Learn to use ServiceX"
 
 keypoints:
-- " keypoint 1"
-- " keypoint 2"
+- "Remember to visit the above additional resources for python, Jupyter Notebooks and JupyterLab if you need to learn more about with how they work or in case of any doubt."
 ---
 
 > ## About Coffea Casa
@@ -34,6 +31,11 @@ keypoints:
 
 <h2 id="prerequisites">Prerequisites</h2>
 
+The primary mode of analysis with coffea-casa is coffea. Coffea provides plenty of examples to users in its <a href="https://coffeateam.github.io/coffea/examples.html/">documentation</a> A good starting point may be this tutorial on columnar analysis in coffea.
+
+Knowledge of Python is also assumed. Standard coffea analyses are contained within Jupyter Notebooks, which allow for dynamic, block-by-block execution of code. Coffea-casa employs the JupyterLab interface. JupyterLab is designed for hosting Jupyter Notebooks on the web, and permits the usage of additional features within its environment, including Git access, compatibility with cluster computing tools, and much, much more.
+
+If you aren't familiar with any of these tools, please click on the links above for additional resources, and get acquainted with how they work. If you want examples of how coffea-casa merges these tools, refer to the gallery of coffea-casa examples.
 <h2 id="access">Access</h2>
 
 ![image info](./../fig/coffea_access.png)

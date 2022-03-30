@@ -6,11 +6,10 @@ questions:
 - "What is HTCondor?"
 - "How jobs are handled with HTCondor?"
 objectives:
-- "objective1"
-- "objective 2"
+- "Learn the mean 5 steps to Run a job"
+
 keypoints:
-- " keypoint1"
-- " keypoint2 ᕙ(º_º)ᕗ "
+- "Work decomposition: prepare, create, submit, manage and examine the job "
 ---
 <!--- just a comment --->
 
