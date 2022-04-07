@@ -1,7 +1,7 @@
 ---
 title: "Coffea Casa"
-teaching: 5
-exercises: 15
+teaching: 0
+exercises: 0
 questions:
 - " What is Coffea Casa? "
 objectives:

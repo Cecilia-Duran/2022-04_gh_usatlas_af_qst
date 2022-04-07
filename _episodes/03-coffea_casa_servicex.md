@@ -1,7 +1,7 @@
 ---
 title: "Coffe Casa ServiceX"
-teaching: 5
-exercises: 15
+teaching: 0
+exercises: 0
 questions:
 - "What is ServiceX?"
 objectives:

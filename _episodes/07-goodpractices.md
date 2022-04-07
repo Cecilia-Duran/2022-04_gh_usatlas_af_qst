@@ -1,7 +1,7 @@
 ---
 title: "Good practices"
-teaching: 10
-exercises: 20
+teaching: 0
+exercises: 0
 questions:
 - "How can we make the best use of the resources at the Analysis Facility"
 objectives:
@@ -23,6 +23,9 @@ Jobs may see
 >
 > - A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly
 >
+
+JupyterLab
+Since applications are time limited, please remember to request only the resources that you need.
 {: .callout}
 
 Acceptable Use policy
