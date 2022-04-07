@@ -11,6 +11,23 @@ keypoints:
 
 ---
 
+Resource Limitations on a running a job and HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.
+
+Jobs may see
+>
+> - A private (non-shared) /tmp and /var/tmp directory
+>
+> - A private (non-shared) /dev/shm
+>
+> - A limit on the amount of memory they can allocate, above which the job may be placed on hold or evicted by the system.
+>
+> - A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly
+>
+{: .callout}
+
+Acceptable Use policy
+
+
 
 
 {% include links.md %}

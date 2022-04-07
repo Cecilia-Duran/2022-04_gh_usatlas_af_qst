@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-04-07 02:18:18 -0500">
+    <meta http-equiv="last-modified" content="2022-04-07 11:09:14 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -1684,22 +1684,12 @@ periodic_release <span class="o">=</span> <span class="o">(</span>HoldReasonSubC
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>on_exit_hold <span class="o">=</span> ExitBySignal <span class="o">==</span> <span class="nb">true</span>
 </code></pre></div></div>
-<p><a href="https://htcondor.readthedocs.io/en/latest/man-pages/index.html">Command reference manual</a></p>
+<p>Go to <a href="https://htcondor.readthedocs.io/en/latest/man-pages/index.html">Command reference manual</a></p>
 
 <!-------------------------------------------------------------------------------------->
 <!----------------------------- services for running jobs ------------------------------>
 
 <h2 id="services"> Services for Running Jobs</h2>
-
-<p>Jobs can use these services to provide more reliable runs, to give logging and monitoring data for users, and to synchronize with other jobs. Note that different HTCondor job universes may provide different services. The functionality below is available in the vanilla universe, unless otherwise stated.</p>
-
-<ul>
-  <li>Environment Variables</li>
-</ul>
-
-<p>An HTCondor job running on a worker node does not, by default, inherit the environment variables from the machine it runs on or the machine it was submitted from. If it did, the environment might change from run to run, or machine to machine, and create non reproducible, difficult to debug problems.</p>
-
-<p>The user may define environment variables for the job with the environment command in the submit file.</p>
 
 <p>In general, it is preferable to just declare the minimum set of needed environment variables with the environment command, as that clearly declares the needed environment variables.</p>
 
@@ -1735,28 +1725,6 @@ periodic_release <span class="o">=</span> <span class="o">(</span>HoldReasonSubC
   </li>
   <li>
     <p><code class="language-plaintext highlighter-rouge">X509_USER_PROXY</code> gives the full path to the X.509 user proxy file if one is associated with the job. Typically, a user will specify x509userproxy in the submit description file.</p>
-  </li>
-  <li>
-    <p>Resource Limitations on a Running Job</p>
-  </li>
-</ul>
-
-<p>HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.</p>
-
-<p>Jobs may see</p>
-
-<ul>
-  <li>
-    <p>A private (non-shared) /tmp and /var/tmp directory</p>
-  </li>
-  <li>
-    <p>A private (non-shared) /dev/shm</p>
-  </li>
-  <li>
-    <p>A limit on the amount of memory they can allocate, above which the job may be placed on hold or evicted by the system.</p>
-  </li>
-  <li>
-    <p>A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly</p>
   </li>
 </ul>
 

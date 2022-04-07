@@ -1418,7 +1418,7 @@ A job may exit, and HTCondor consider it completed, even though something has go
 ```bash
 on_exit_hold = ExitBySignal == true
 ```
-<a href="https://htcondor.readthedocs.io/en/latest/man-pages/index.html">Command reference manual</a>
+Go to <a href="https://htcondor.readthedocs.io/en/latest/man-pages/index.html">Command reference manual</a>
 
 {: .challenge}
 
@@ -1426,16 +1426,6 @@ on_exit_hold = ExitBySignal == true
 <!----------------------------- services for running jobs ------------------------------>
 
 <h2 id="services"> Services for Running Jobs</h2>
-
-Jobs can use these services to provide more reliable runs, to give logging and monitoring data for users, and to synchronize with other jobs. Note that different HTCondor job universes may provide different services. The functionality below is available in the vanilla universe, unless otherwise stated.
-
-- Environment Variables
-
-An HTCondor job running on a worker node does not, by default, inherit the environment variables from the machine it runs on or the machine it was submitted from. If it did, the environment might change from run to run, or machine to machine, and create non reproducible, difficult to debug problems.
-
-
-The user may define environment variables for the job with the environment command in the submit file. 
-
 
 In general, it is preferable to just declare the minimum set of needed environment variables with the environment command, as that clearly declares the needed environment variables. 
 
@@ -1460,21 +1450,6 @@ Additional environment variables
 - `CUBACORES GOMAXPROCS JULIA_NUM_THREADS MKL_NUM_THREADS NUMEXPR_NUM_THREADS OMP_NUM_THREADS OMP_THREAD_LIMIT OPENBLAS_NUM_THREADS TF_LOOP_PARALLEL_ITERATIONS TF_NUM_THREADS` are set to the number of cpu cores provisioned to this job. Should be at least RequestCpus, but HTCondor may match a job to a bigger slot. Jobs should not spawn more than this number of cpu-bound threads, or their performance will suffer. Many third party libraries like OpenMP obey these environment variables.
 
 - `X509_USER_PROXY` gives the full path to the X.509 user proxy file if one is associated with the job. Typically, a user will specify x509userproxy in the submit description file.
-
-- Resource Limitations on a Running Job
-
-HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.
-
-Jobs may see
-
-- A private (non-shared) /tmp and /var/tmp directory
-
-- A private (non-shared) /dev/shm
-
-- A limit on the amount of memory they can allocate, above which the job may be placed on hold or evicted by the system.
-
-- A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly
-
 
 
 {: .challenge_ brown box} 

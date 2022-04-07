@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-04-07 02:18:18 -0500">
+    <meta http-equiv="last-modified" content="2022-04-07 11:09:14 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -231,6 +231,29 @@
 
 </blockquote>
 
+<p>Resource Limitations on a running a job and HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.</p>
+
+<p>Jobs may see</p>
+<blockquote class="callout">
+
+  <ul>
+    <li>
+      <p>A private (non-shared) /tmp and /var/tmp directory</p>
+    </li>
+    <li>
+      <p>A private (non-shared) /dev/shm</p>
+    </li>
+    <li>
+      <p>A limit on the amount of memory they can allocate, above which the job may be placed on hold or evicted by the system.</p>
+    </li>
+    <li>
+      <p>A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly</p>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Acceptable Use policy</p>
 
 
 

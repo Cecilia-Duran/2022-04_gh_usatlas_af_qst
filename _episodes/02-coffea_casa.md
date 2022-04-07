@@ -31,12 +31,24 @@ keypoints:
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-The primary mode of analysis with coffea-casa is coffea. Coffea provides plenty of examples to users in its <a href="https://coffeateam.github.io/coffea/examples.html/">documentation</a> A good starting point may be this tutorial on columnar analysis in coffea.
+ <a href="https://coffeateam.github.io/coffea/examples.html/">documentation</a> 
 
-Knowledge of Python is also assumed. Standard coffea analyses are contained within Jupyter Notebooks, which allow for dynamic, block-by-block execution of code. Coffea-casa employs the JupyterLab interface. JupyterLab is designed for hosting Jupyter Notebooks on the web, and permits the usage of additional features within its environment, including Git access, compatibility with cluster computing tools, and much, much more.
+check this <a href="https://github.com/CoffeaTeam/coffea-casa-tutorials/blob/master/analysis/analysis_tutorial.ipynb">tutorial on columnar analysis in coffea</a>
 
-If you aren't familiar with any of these tools, please click on the links above for additional resources, and get acquainted with how they work. If you want examples of how coffea-casa merges these tools, refer to the gallery of coffea-casa examples.
+Are you familiar with Python, Jupyter Notebooks, JupyterLab interface?
+
+Useful tutorials
+
+<a href="https://docs.python.org/3/tutorial/"> python tutorial </a>
+
+<a href="https://jupyter.org/"> jupyter notebook documentation </a>
+
+<a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html"> JupyterLab interface</a> 
+
+
 <h2 id="access">Access</h2>
+
+<a href="https://coffea.af.uchicago.edu">access point to the Coffea-Casa Analysis Facility at UChicago</a>
 
 ![image info](./../fig/coffea_access.png)
 
