@@ -3,8 +3,7 @@ title: "HTCondor"
 teaching:  0
 exercises: 0
 questions:
-- "What is HTCondor?"
-- "How jobs are handled with HTCondor?"
+- "How Do I handle jobs with HTCondor?"
 objectives:
 - "Learn the mean 5 steps to Run a job"
 
@@ -12,21 +11,27 @@ keypoints:
 - "Work decomposition: prepare, create, submit, manage and examine the job "
 ---
 <!--- just a comment --->
-
+> ## HTCondor
+>
+> - <a href="#intro">Introduction</a>
+>
+> - <a href="#running">Running a job</a>
+>
+> - <a href="#quick">HTCondor quick start</a> 
+>
+> - <a href="#submitting">Submitting a job</a>
+>
+> - <a href="#managing">Managing a job</a>
+>
+> - <a href="#services">Services for running jobs</a>
+>
+{: .callout}
 <!-------------------------------------------------------------------------------------->
 <!----------------------------- about htcondor (introduction)--------------------------->
 
-
-> ## About HTCondor
->
-> - Why should we use HTCondor?
-> - How does it works?
->
-{: .callout}
+<h2 id="intro">Introduction</h2>
 
 HTCondor is a specialized batch system for managing compute-intensive jobs. It provides a queuing mechanism, scheduling policy, priority scheme, and resource classifications. Users submit their compute jobs to HTCondor, HTCondor puts the jobs in a queue, runs them, and then informs the user as to the result.
-
-### How does it works?
 
 This architecture can be implemented in different ways.
 
@@ -38,7 +43,8 @@ This architecture can be implemented in different ways.
 
 <!------------------------------------------------------------------------------------->
 <!----------------------------- running a job ----------------------------------------->
-> ## Running a job
+<h2 id="running">Running a job</h2>
+
 >
 > - Job : an independently-scheduled unit of computing work
 >
@@ -51,7 +57,7 @@ This architecture can be implemented in different ways.
 {: .callout}
   
  
-## Work Decomposition
+Work Decomposition
 
 ![image info](./../fig/run_job_steps.png)
 
@@ -61,16 +67,15 @@ This architecture can be implemented in different ways.
 <!------------------------------------------------------------------------------------->
 <!----------------------------- htcondor quick start----------------------------------->
 
+<h2 id="quick"> HTCondor quick start </h2>
 
 HTCondor is a job scheduler, you give HTCondor a file containing commands that tell it how to run jobs. HTCondor locates a machine that can run each job within the pool of machines, packages up the job and ships it off to this execute machine, the jobs run and output is returned to the machine that submitted the jobs
 
 This guides provides enough guidance to submit and observer the successful completion of a first job, it then suggests extensions that you can apply to your particular jobs
 
-> ## HTCondor quick start## This guide presumes that
->
-> - HTcondor is running.
->
-> - You have access to a machine withn the pool that may submit jobs.
+
+
+> This guide presumes that:
 >
 > - You are logged into a working on the submit machine.
 >
@@ -80,7 +85,7 @@ This guides provides enough guidance to submit and observer the successful compl
 >
 {: .callout}	
 	
-###  A first HTCondor job 
+- A first HTCondor job 
 
 For HTCondor to run a job it must be given details such as the names and location of the exe and all needed input files in a submit description file.
 
@@ -149,7 +154,7 @@ direct HTCondor to explicitly send the needed files, including the executable, t
 
 The queue command tells HTCondor to run one instance of this job.
 
-### Submitting the job
+- Submitting the job
 
 With this submit description file, all that remains is to hand off the job to HTCondor. With the current working directory being the one that contains the sleep.sub submit description file and the executable (sleep.sh or sleep.bat), this job submission is accomplished with the command line
 
@@ -166,7 +171,7 @@ Submitting job(s).
 ~~~
 {: .output}
 
-### Monitoring the job
+- Monitoring the job
 
 Once the job has been submitted, command line tools may help you follow along with the progress of the job. `The condor_q` command prints a listing of all the jobs currently in the queue. For example, a short time after the user Kris submits the sleep job the submit machine on a pool that has no other queued jobs, the output may appear as
 
@@ -222,7 +227,7 @@ At job completion, the log file contains
 
 Each event in the job event log file is separated by a line containing three periods. For each event, the first 3-digit value is an event number.
 
-### Removing a job
+- Removing a job
 
 Successfully submitted jobs will occasionally need to be removed from the queue. Invoke the condor_rm command specifying the job identifier as a command line argument. Kris’ job may be removed from the queue with
 ```
@@ -239,7 +244,7 @@ condor_rm 6
 
 will cause all jobs within that cluster to be removed.
 
-## The science Job Example
+- The science Job Example
 
 A **second example** job illustrates aspects of file specification for the job. This program does not use standard input or output; instead, the command line to invoke this program specifies two input files and one output file. For this example, the command line to invoke science.exe (not as an HTCondor job) will be
 
@@ -278,7 +283,7 @@ These values are the HTCondor defaults. The should_transfer_files command specif
 
 When the job completes, all files created by the executable as it ran are transferred back to the submit machine.
 
-## Expanding the science Job and the Organization of Files
+- Expanding the science Job and the Organization of Files
 
 A **third example** promotes understanding of how HTCondor makes the submission of lots of jobs easy. Assume that the science.exe job is to be run 40 times. If the input and output files were exactly the same for each run:
 
@@ -348,16 +353,20 @@ run2/
     * outfile.txt
     * science3.log
 ```
+
+
 <!------------------------------------------------------------------------------------->
 <!----------------------------- submitting a job -------------------------------------->
-## Submitting a Job
+
+
+<h2 id="submitting"> Submitting a Job</h2>
 
 The `condor_submit` command takes a job description file as input and submits the job to HTCondor.  Items such as the name of the executable to run, the initial working directory, and command-line arguments to the program all go into the submit description file. `condor_submit` creates a job ClassAd based upon the information, and HTCondor works toward running the job.
 
-## Sample submit description files
+- Sample submit description files
 
 
-#### Example 1
+   - Example 1
 
 This example is one of the simplest submit description files possible. It queues the program myexe for execution somewhere in the pool. As this submit description file does not request a specific operating system to run on, HTCondor will use the default, which is to run the job on a machine which has the same architecture and operating system it was submitted from.
 
@@ -390,7 +399,7 @@ should_transfer_files = yes
 queue
 ```
 
-> ## Explanation of variables in example 1
+> - Explanation of variables in example 1:
 >
 > output        :   The standard output for this job will go to the file `outputfile`.
 >
@@ -408,7 +417,7 @@ queue
 >
 {: .callout}
 
-#### Example 2
+   - Example 2
 
 A simple example
 
@@ -439,7 +448,7 @@ Each instance of this program works on one input file.
 We prepare 150 copies of this input file in the current directoy, and name them input_file.0, ... up to input_file.149. 
 Whit transfer_input_files, we tell HTCondor which input file to send to each instance of the program.
 
-#### Example 3
+   - Example 3
 
 A simple example with a python script
 
@@ -496,7 +505,7 @@ check status:
 condor_q
 ```
 
-### Example 4
+   - Example 4
 
 A simple example with a small program in C.
 
@@ -607,7 +616,7 @@ condor_q
 ```
 {: .output}
 
-#### Using parameters in the simple job
+- Using parameters in the simple job
 
 If we would like to have our program calculate a whole set of values for different inputs. How can we do that?
 
@@ -672,7 +681,7 @@ We calculated: 24
 {: .output}
 
 
-## Submitting many similar jobs with one queue command
+- Submitting many similar jobs with one queue command
 
 A wide variety of job submissions can be specified with extra information to the queue submit command. This flexibility eliminates the need for a job wrapper or Perl script for many submissions.
 
@@ -702,7 +711,7 @@ The optional slice specifies a subset of the list of items using the Python synt
 
 Here are a set of examples.
 
-### Example 1
+   - Example 1
 
 ```bash
 transfer_input_files = $(filename)
@@ -722,7 +731,7 @@ arguments            = -infile ending.dat
 queue
 ```
 
-### Example 2
+   - Example 2
 
 ```bash 
 queue 1 input in A, B, C
@@ -737,7 +746,7 @@ input = C
 queue
 ````
 
-### Example 3
+   - Example 3
 
 ```bash
 queue input, arguments from (
@@ -756,7 +765,7 @@ arguments = -c -d 92
 queue
 ```
 
-### Example 4
+   - Example 4
 
 ```bash
 queue from seq 7 9 |
@@ -772,7 +781,7 @@ queue
 item = 9
 queue
 ```
-## Variables in the Submit Description File
+- Variables in the Submit Description File
 
 
 `$(Cluster) or $(ClusterId)`
@@ -801,7 +810,7 @@ queue
 
 `$(Row)`
 
-## Including Submit Commands Defined Elsewhere
+- Including Submit Commands Defined Elsewhere
 
 Externally defined submit commands can be incorporated into the submit description file using the syntax
 
@@ -831,7 +840,7 @@ transfer_input_files = infiles/A.dat, infiles/B.dat, infiles/C.dat
 
 is incorporated into the submit description file.
 
-## Using Conditionals in the Submit Description File
+- Using Conditionals in the Submit Description File
 
 Conditional if/else semantics are available in a limited form. The syntax:
 
@@ -944,7 +953,7 @@ then the command line arguments of the submitted job become
 arguments = -n 1 -debug
 ```
         
-## Interactive Jobs
+- Interactive Jobs
 
 An interactive job is a Condor job that is provisioned and scheduled like any other vanilla universe Condor job onto an execute machine within the pool. The result of a running interactive job is a shell prompt issued on the execute machine where the job runs. 
 
@@ -985,7 +994,7 @@ Here are examples of situations where interactive jobs may be of benefit.
 
 - Development may have an interactive nature, and proceed more quickly when done on a pool machine. It may also be that the development platforms required reside within Condor’s purview as execute hosts.
 
-## Submitting Lots of Jobs
+- Submitting Lots of Jobs
 
 When submitting a lot of jobs with a single submit file, you can dramatically speed up submission and reduce the load on the condor_schedd by submitting the jobs as a late materialization job factory.
 
@@ -1043,9 +1052,11 @@ queue 15000
 <!------------------------------------------------------------------------------------->
 <!----------------------------- managing a job ---------------------------------------->
 
+<h2 id="managing">Managing a job</h2>
+
 What to do once jobs are submitted?
 
-### Checking on the progress of jobs
+- Checking on the progress of jobs
 
 You can check on your jobs with the condor_q command.
 
@@ -1136,7 +1147,7 @@ bardolph.c INTEL    LINUX        1.000  nice-user.condor@cs. chevre.cs.wisc.
 ~~~
 {: .output}
 
-## Peeking in on a running job’s output files
+- Peeking in on a running job’s output files
 
 `The condor_tail` command can copy output files from a running job on a remote machine back to the submit machine. condor_tail uses the same networking stack as HTCondor proper, so it will work if the execute machine is behind a firewall.
 
@@ -1149,7 +1160,7 @@ To copy a different file, run
 condor_tail xx.yy name_of_output_file
 ```
 
-## Removing a job from a queue
+- Removing a job from a queue
 
 `condor_rm`
 
@@ -1176,14 +1187,14 @@ condor_q -nobatch
 ```
 {: .output}
 
-## Placing a job on hold
+- Placing a job on hold
 
 `condor_hold`
 `condor_release`
 
 Jobs that are running when placed on hold will start over from the beginning when released.
 
-## Changing the priority of jobs
+- Changing the priority of jobs
 
 HTCondor provides each user with the capability of assigning priorities to each submitted job.
 
@@ -1209,7 +1220,7 @@ condor_q -nobatch raman
 
 It is important to note that these job priorities are completely different from the user priorities assigned by HTCondor. 
 
-## Why is the job not running?
+- Why is the job not running?
 
 The most common reason why the job is not running is that HTCondor has not yet been through its periodic negotiation cycle, in which queued jobs are assigned to machines within the pool and begin their execution.
 
@@ -1256,14 +1267,14 @@ Suggestions:
 {: .output}
 
 
-## Job in the Hold State
+- Job in the Hold State
 
 For the example job ID 16.0, use:
 
 condor_q  -hold  16.0
 
 
-## Job Termination
+- Job Termination
 
 
 A ticket of execution is usually issued by the condor_startd, and includes:
@@ -1284,7 +1295,7 @@ As of version 8.9.4, HTCondor only issues ToE in three cases:
 
 - or a DEACTIVATE_CLAIM_FORCIBLY command (HowCode 2).
 
-## Job Completion
+- Job Completion
 
 When an HTCondor job completes, either through normal means or by abnormal termination by signal, HTCondor will remove it from the job queue.
 
@@ -1321,7 +1332,7 @@ The job terminated event includes the following:
 - a report on which partitionable resources were used, if any. Resources include CPUs, disk, and memory; all are lifetime peak values.
 
 
-## Summary of all HTCondor users and their jobs
+- Summary of all HTCondor users and their jobs
 
 When jobs are submitted, HTCondor will attempt to find resources to run the jobs. 
 
@@ -1348,9 +1359,9 @@ nice-user.condor@cs.                 6                504                  0
 {: .output }
 
 
-## Automatically managing a job
+- Automatically managing a job
 
-### Automatically rerunning a failed job
+   - Automatically rerunning a failed job
 
 If a job exits with a non-zero exit code, this usually means that some error has happened. 
 
@@ -1376,7 +1387,7 @@ should_transfer_files = yes
 queue
 ```
 
-## Automatically removing a job in the queue
+   - Automatically removing a job in the queue
 
 In the submit description file, set periodic_remove to a classad expression. For example, to automatically remove a job which has been in the queue for more than 100 hours, the submit file could have
 
@@ -1389,7 +1400,7 @@ or, to remove jobs that have been running for more than two hours:
 periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (2 * 3600)
 ```
 
-## Automatically releasing a held job
+   - Automatically releasing a held job
 
 In the same way that a job can be automatically held, jobs in the held state can be released with the periodic_release command. Often, using a periodic_hold with a paired periodic_release is a good way to restart a stuck job.
 
@@ -1400,25 +1411,25 @@ periodic_hold_subcode = 42
 periodic_release = (HoldReasonSubCode == 42)
 ```
 
-## Holding a completed job
+   - Holding a completed job
 
 A job may exit, and HTCondor consider it completed, even though something has gone wrong with the job. A held job informs users that there may have been a problem with the job that should be investigated. For example, if a job should never exit by a signal, the job can be put on hold if it does with
 
 ```bash
 on_exit_hold = ExitBySignal == true
 ```
-
+<a href="https://htcondor.readthedocs.io/en/latest/man-pages/index.html">Command reference manual</a>
 
 {: .challenge}
 
 <!-------------------------------------------------------------------------------------->
 <!----------------------------- services for running jobs ------------------------------>
 
-## Services for Running Jobs
+<h2 id="services"> Services for Running Jobs</h2>
 
 Jobs can use these services to provide more reliable runs, to give logging and monitoring data for users, and to synchronize with other jobs. Note that different HTCondor job universes may provide different services. The functionality below is available in the vanilla universe, unless otherwise stated.
 
-## Environment Variables
+- Environment Variables
 
 An HTCondor job running on a worker node does not, by default, inherit the environment variables from the machine it runs on or the machine it was submitted from. If it did, the environment might change from run to run, or machine to machine, and create non reproducible, difficult to debug problems.
 
@@ -1430,7 +1441,7 @@ In general, it is preferable to just declare the minimum set of needed environme
 
 Commands within the submit description file may reference the environment variables of the submitter. Submit description file commands use $ENV(EnvironmentVariableName) to reference the value of an environment variable.
 
-## Extra Environment Variables HTCondor sets for Jobs
+- Extra Environment Variables HTCondor sets for Jobs
 
 Additional environment variables
 
@@ -1450,7 +1461,7 @@ Additional environment variables
 
 - `X509_USER_PROXY` gives the full path to the X.509 user proxy file if one is associated with the job. Typically, a user will specify x509userproxy in the submit description file.
 
-## Resource Limitations on a Running Job
+- Resource Limitations on a Running Job
 
 HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.
 
