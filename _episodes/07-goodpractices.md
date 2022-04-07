@@ -11,7 +11,8 @@ keypoints:
 
 ---
 
-Resource Limitations on a running a job and HTCondor may configure the system a job runs on to prevent a job from using all the resources on a machine.
+Resource Limitations on a running a job:
+and HTCondor may configure the system to prevent using all the resources on a machine.
 
 Jobs may see
 >
@@ -23,9 +24,11 @@ Jobs may see
 >
 > - A limit on the amount of CPU cores the may use, above which the job may be blocked, and will run very slowly
 >
+{: .callout}
 
 JupyterLab
-Since applications are time limited, please remember to request only the resources that you need.
+
+> Since applications are time limited, please remember to request only the resources that you need.
 {: .callout}
 
 Acceptable Use policy
