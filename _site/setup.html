@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-08-01 14:43:55 -0500">
+    <meta http-equiv="last-modified" content="2022-08-01 15:46:25 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -104,11 +104,13 @@
           <a href="./" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="./01-htcondor/index.html">HTCondor</a></li>
+            <li><a href="./01-uchicago/index.html">UChicago</a></li>
             
             <li><a href="./02-coffea_casa/index.html">Coffea Casa</a></li>
             
             <li><a href="./03-coffea_casa_servicex/index.html">Coffe Casa ServiceX</a></li>
+            
+            <li><a href="./03-htcondor/index.html">HTCondor</a></li>
             
             <li><a href="./04-jupyter_lab/index.html">JupyterLab</a></li>
             
@@ -163,12 +165,13 @@
 
 <h1 id="quick-start">Quick Start</h1>
 
-<p>Just log in to the UChicago Analysis Facility</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -Y &lt;your_user_name&gt;@login.af.uchicago.edu
-</code></pre></div></div>
+<p>Be sure to have your X509 Proxy Certificate. You will need to use it e.f. to access ATLAS Data.
+You can use the same you copied on lxplus (in case you already did it) or download it from this CERN page:</p>
+
+<p><a href="https://cafiles.cern.ch/cafiles/">https://cafiles.cern.ch/cafiles/</a></p>
 
 <p>Create a directory for the examples (optional)</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir htcondor_module
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir htcondor_module &amp;&amp; cd htcondor_module
 </code></pre></div></div>
 
 <p>For this tutorial we will work at the /home area  but remember to move to the /data area when you use bigger data files.</p>
