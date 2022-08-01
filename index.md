@@ -10,7 +10,7 @@ This lesson describes how to manage jobs
 > ## Prerequisites
 >
 >
-> This assumes you already signed up on the [UChicago Analysis Facility website](https://af.uchicago.edu/)
+> This assumes you already have a CERN account and the respective X509 Proxy Certificate, e.g. to access ATLAS Data
 >
 >
 {: .prereq}

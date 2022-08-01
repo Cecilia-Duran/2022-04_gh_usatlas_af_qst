@@ -30,8 +30,6 @@ large files (input data, output, etc) ----> $DATA
 >
 > - JupyterLab
 >
-> - XCache
->
 > - Good pratices
 >
 {: .callout}
