@@ -12,26 +12,28 @@ You can use the same you copied on lxplus (in case you already did it) or downlo
 
 
 Create a directory for the examples (optional)
-~~~
+~~~bash
 mkdir htcondor_module && cd htcondor_module
 ~~~
+{: .language-bash}
 
 For this tutorial we will work at the /home area  but remember to move to the /data area when you use bigger data files.
 
 small files (git repositories, source code, text files, configuration files, etc) ---> $HOME
 large files (input data, output, etc) ----> $DATA
 
+
 > ## What will be covered in this tutorial?
 >
-> - Handling jobs with HTCondor
+> - About the UChicago Analysis Facilities
 > 
-> - Coffea Casa
+> - Requesting an account & login to the facility
 >
-> - Coffea Casa - ServiceX
+> - How to set up the ATLAS environment
 >
-> - JupyterLab
+> - HTCondor
 >
-> - Good pratices
+> - Coffea Casa and JupyterLab
 >
 {: .callout}
 {: .language-bash}

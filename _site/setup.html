@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-08-01 15:46:25 -0500">
+    <meta http-equiv="last-modified" content="2022-08-02 19:26:10 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -104,15 +104,17 @@
           <a href="./" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="./01-uchicago/index.html">UChicago</a></li>
+            <li><a href="./01-uchicago/index.html">UChicago Analysis Facility</a></li>
             
-            <li><a href="./02-coffea_casa/index.html">Coffea Casa</a></li>
+            <li><a href="./02-accountrequest/index.html">Account Request & Login via SSH</a></li>
             
-            <li><a href="./03-coffea_casa_servicex/index.html">Coffe Casa ServiceX</a></li>
+            <li><a href="./03-atlasenv/index.html">Atlas environment</a></li>
             
-            <li><a href="./03-htcondor/index.html">HTCondor</a></li>
+            <li><a href="./04-htcondor/index.html">HTCondor</a></li>
             
-            <li><a href="./04-jupyter_lab/index.html">JupyterLab</a></li>
+            <li><a href="./05-coffea_casa/index.html">Coffea Casa</a></li>
+            
+            <li><a href="./05-jupyter_lab/index.html">JupyterLab</a></li>
             
             <li><a href="./07-goodpractices/index.html">Good practices</a></li>
             
@@ -171,7 +173,7 @@ You can use the same you copied on lxplus (in case you already did it) or downlo
 <p><a href="https://cafiles.cern.ch/cafiles/">https://cafiles.cern.ch/cafiles/</a></p>
 
 <p>Create a directory for the examples (optional)</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir htcondor_module &amp;&amp; cd htcondor_module
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>htcondor_module <span class="o">&amp;&amp;</span> <span class="nb">cd </span>htcondor_module
 </code></pre></div></div>
 
 <p>For this tutorial we will work at the /home area  but remember to move to the /data area when you use bigger data files.</p>
@@ -184,19 +186,19 @@ large files (input data, output, etc) —-&gt; $DATA</p>
 
   <ul>
     <li>
-      <p>Handling jobs with HTCondor</p>
+      <p>About the UChicago Analysis Facilities</p>
     </li>
     <li>
-      <p>Coffea Casa</p>
+      <p>Requesting an account &amp; login to the facility</p>
     </li>
     <li>
-      <p>Coffea Casa - ServiceX</p>
+      <p>How to set up the ATLAS environment</p>
     </li>
     <li>
-      <p>JupyterLab</p>
+      <p>HTCondor</p>
     </li>
     <li>
-      <p>Good pratices</p>
+      <p>Coffea Casa and JupyterLab</p>
     </li>
   </ul>
 

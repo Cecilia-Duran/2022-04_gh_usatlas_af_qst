@@ -49,7 +49,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-    <title>Quickstart Tutorial: About</title>
+    <title>Quickstart Tutorial: Account Request & Login via SSH</title>
   </head>
   <body>
 
@@ -148,7 +148,7 @@
 	
         <li><a href="../LICENSE.html">License</a></li>
 	
-	<li><a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_extras/about.md">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	<li><a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/02-accountrequest.md">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
 	
       </ul>
       <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
@@ -161,75 +161,184 @@
 </nav>
 
 
-<h1 class="maintitle"><a href="../index.html">Quickstart Tutorial</a>: About</h1>
-
-
 <div class="row">
-  <div class="col-md-2" align="center">
-    <a href="https://carpentries.org/"><img src="../assets/img/cp-logo-blue.svg" alt="The Carpentries logo" /></a>
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-uchicago/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
   </div>
-  <div class="col-md-8">
-    <p><a href="https://carpentries.org/">The Carpentries</a> comprises
-    Software Carpentry and Data Carpentry, communities of Instructors, Trainers,
-    Maintainers, helpers, and supporters who share a mission to teach
-    foundational coding and data science skills to researchers. In January,
-    2018, The Carpentries was formed by the merger of Software Carpentry and
-    Data Carpentry.</p>
-
-    <p>While individual lessons and workshops continue to be run under each
-    lesson project, The Carpentries provide overall staffing and governance, as
-    well as support for assessment, instructor training and mentoring.
-    Memberships are joint, and the Carpentries project maintains a shared Code
-    of Conduct. The Carpentries is a fiscally sponsored project of Community
-    Initiatives, a registered 501(c)3 non-profit based in California, USA.</p>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Quickstart Tutorial</a></h3>
+    
   </div>
-</div>
-<div class="row">
-  <div class="col-md-2" align="center">
-    <a href="https://software-carpentry.org"><img src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" /></a>
-  </div>
-  <div class="col-md-8">
-     <p>Since 1998, <a href="https://software-carpentry.org">Software Carpentry</a> has
-    been teaching researchers across all disciplines the foundational coding
-    skills they need to get more done in less time and with less pain. Its
-    volunteer instructors have run hundreds of events for thousands of learners
-    around the world. Now that all research involves some degree of
-    computational work, whether with big data, cloud computing, or simple task
-    automation, these skills are needed more than ever.</p>
-  </div>
-</div>
-<p><br /></p>
-<div class="row">
-  <div class="col-md-2" align="center">
-    <a href="http://datacarpentry.org"><img src="../assets/img/dc-icon-black.svg" alt="Data Carpentry logo" /></a>
-  </div>
-  <div class="col-md-8">
-    <p><a href="http://datacarpentry.org">Data Carpentry</a> develops and teaches
-    workshops on the fundamental data skills needed to conduct research. Its
-    target audience is researchers who have little to no prior computational
-    experience, and its lessons are domain specific, building on learners'
-    existing knowledge to enable them to quickly apply skills learned to their
-    own research. Data Carpentry workshops take researchers through the entire
-    data life cycle.</p>
-  </div>
-</div>
-<p><br /></p>
-<div class="row">
-  <div class="col-md-2" align="center">
-    <a href="https://librarycarpentry.org/"><img src="../assets/img/lc-icon-black.png" alt="Library Carpentry logo" /></a>
-  </div>
-  <div class="col-md-8">
-    <p><a href="https://librarycarpentry.org/">Library Carpentry</a> is in discussions with
-    The Carpentries to be a Lesson Project, like Software Carpentry*
-    and Data Carpentry. Library Carpentry develops lessons and
-    teaches workshops for and with people working in library- and
-    information-related roles. Its goal is to create an on-ramp to empower this
-    community to use software and data in their own work, as well as be
-    advocates for and train others in efficient, effective and reproducible data
-    and software practices.</p>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-atlasenv/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
   </div>
 </div>
 
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Account Request & Login via SSH</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 0 min
+      <br/>
+      <strong>Exercises:</strong> 0 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I join this awesome US-ATLAS analysis facility?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Get a computing account and sign into UChicago analysis facility</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="main-steps">Main steps</h2>
+
+  <ul>
+    <li>
+      <p><a href="#account">Account request via CIConnect</a></p>
+    </li>
+    <li>
+      <p><a href="#key">Upload public SSH key</a></p>
+    </li>
+    <li>
+      <p><a href="#login">Login via SSH</a></p>
+    </li>
+  </ul>
+</blockquote>
+
+<!------------------------------------------------------------------------------------->
+<!------------------------------ Account request -------------------------------------->
+<h2 id="account">Account Request via CIConnect</h2>
+
+<p>Go to <a href="https://af.uchicago.edu">UChicago Analysis Facility Website</a> and click Sign-Up
+<img src="./../fig/i_a1signup.png/" alt="image info" width="700" /></p>
+
+<p>Accept use policy and continue.
+<img src="./../fig/i_a2policy.png/" alt="image info" width="700" /></p>
+
+<p>Globus site: use your CERN or institutional account and login.
+<img src="./../fig/i_a3organiz.png" alt="image info" width="700" /></p>
+
+<p>After your organization is found, continue.
+<img src="./../fig/i_a3organizlog.png" alt="image info" width="700" /></p>
+
+<p>Check details, agree to privacy policy and continue.
+<img src="./../fig/i_a4details.png" alt="image info" width="700" /></p>
+
+<p>Allow CI-Connect to acess info
+<img src="./../fig/i_a5useinfo.png" alt="image info" width="700" />
+Good! now you will create your profile.
+<img src="./../fig/i_a6profile.png" alt="image info" width="700" /></p>
+
+<!------------------------------------------------------------------------------------->
+<!------------------------------ Upload public ssh key--------------------------------->
+
+<h2 id="key">Upload public SSH key</h2>
+
+<p>To create your profile just type in the information required.</p>
+
+<p>Now you will upload an SSH public key, <strong>important: do not copy the contents of a file that does not end in <code class="language-plaintext highlighter-rouge">.pub</code>. You mus only upload the <code class="language-plaintext highlighter-rouge">public</code>(.pub)</strong> part of the key.
+if you are not sure if you have generated an SSH Public Key before, try the following instructions on your laptop command line.
+<img src="./../fig/i_a7oldkey.png" alt="image info" width="700" /></p>
+
+<p>Follow the next steps if you don’t have a public key or want to create an additional one for this analysis facility (it is recommended to use a new SSH key for each instance) for example by replacing “rsa” with “rsa_uc” in the following instructions
+<img src="./../fig/i_a8newkey.png" alt="image info" width="700" /></p>
+
+<p>Paste the contents of the clipboard on the next text box and update your profile!!</p>
+
+<p>Remember to check you didn’t add any blank space or additional characters
+<img src="./../fig/i_a9pastekey.png" alt="image info" width="700" /></p>
+
+<!------------------------------------------------------------------------------------->
+<!------------------------------ login via ssh--------------------------------->
+<h2 id="login">Login via SSH</h2>
+
+<p>Now that you signed up on the Analysis Facility website and uploaded a key, it will take a little bit of time to process your profile and add your account to the system. After 10-15 minutes, you ought to be able to login via SSH:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;your_unix_username&gt;@login.af.uchicago.edu
+</code></pre></div></div>
+<p>After logged in you should see something like the following images, containing a welcome message, links to information resources, and your file system quota report</p>
+
+<p><img src="./../fig/i_a10insshlogo.png" alt="image info" width="500" /></p>
+
+<p>If it does not work, please double check that you have been approved, have a public key uploaded and have waited at least 15 minutes. If you still have an issue, feel free to reach out to us for help.</p>
+
+<!----------------------------------- fin --------------------------------------------->
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Look out! paste only the content of your SSH public key!, and never share the content of your SSH private key!</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-uchicago/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-atlasenv/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
 
 
       
@@ -247,7 +356,7 @@
     </div>
     <div class="col-md-6 help-links" align="right">
 	
-	<a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_extras/about.md">Edit on GitHub</a>
+	<a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/02-accountrequest.md">Edit on GitHub</a>
 	
 	/
 	<a href="https://github.com/eressegu/atlas-example-workflow/blob/gh-pages/CONTRIBUTING.md">Contributing</a>

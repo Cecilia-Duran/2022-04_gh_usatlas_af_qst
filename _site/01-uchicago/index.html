@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-08-01 15:46:25 -0500">
+    <meta http-equiv="last-modified" content="2022-08-02 19:26:10 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -49,7 +49,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-    <title>Quickstart Tutorial: UChicago</title>
+    <title>Quickstart Tutorial: UChicago Analysis Facility</title>
   </head>
   <body>
 
@@ -104,15 +104,17 @@
           <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="../01-uchicago/index.html">UChicago</a></li>
+            <li><a href="../01-uchicago/index.html">UChicago Analysis Facility</a></li>
             
-            <li><a href="../02-coffea_casa/index.html">Coffea Casa</a></li>
+            <li><a href="../02-accountrequest/index.html">Account Request & Login via SSH</a></li>
             
-            <li><a href="../03-coffea_casa_servicex/index.html">Coffe Casa ServiceX</a></li>
+            <li><a href="../03-atlasenv/index.html">Atlas environment</a></li>
             
-            <li><a href="../03-htcondor/index.html">HTCondor</a></li>
+            <li><a href="../04-htcondor/index.html">HTCondor</a></li>
             
-            <li><a href="../04-jupyter_lab/index.html">JupyterLab</a></li>
+            <li><a href="../05-coffea_casa/index.html">Coffea Casa</a></li>
+            
+            <li><a href="../05-jupyter_lab/index.html">JupyterLab</a></li>
             
             <li><a href="../07-goodpractices/index.html">Good practices</a></li>
             
@@ -175,7 +177,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-coffea_casa/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../02-accountrequest/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
       
     </h3>
   </div>
@@ -186,7 +188,7 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-10">
-    <h1 class="maintitle">UChicago</h1>
+    <h1 class="maintitle">UChicago Analysis Facility</h1>
   </div>
   <div class="col-md-1">
   </div>
@@ -206,7 +208,7 @@
       <strong>Questions</strong>
       <ul>
 	
-	<li><p>US-ATLAS Shared Tier-3 Analysis Facilities</p>
+	<li><p>What is UChicago Analysis Facility?</p>
 </li>
 	
       </ul>
@@ -220,7 +222,7 @@
       <strong>Objectives</strong>
       <ul>
 	
-	<li><p>Learn: number of GPU instances, selecting a Docker image and GPU memory</p>
+	<li><p>Introduction to the US-ATLAS Shared Tier-3 Analysis Facility at UChicago</p>
 </li>
 	
       </ul>
@@ -229,56 +231,59 @@
 
 </blockquote>
 
-<p>Users can deploy one or more private JupyterLab applications.</p>
+<p>US ATLAS has three shared Tier 3 analysis facilities providing software &amp; computing resources, one of the most recent is located at The University of Chicago and was pre-launched in October 2021.</p>
 
-<p>To encourage fair sharing these applications are time limited.</p>
+<p><strong>Funded by NSF and co-located with MWT2-UC</strong></p>
 
-<h2 id="selecting-a-number-of-gpu-instances">Selecting a number of GPU instances</h2>
+<p><img src="./../fig/i_sharedtier3.png" alt="image info" /></p>
+
+<ul>
+  <li>Large login nodes for develpment &amp; batch pools or larger-scale processing</li>
+  <li>Storage for local datasets &amp; XCache for remote datasets</li>
+  <li>Access to ATLAS &amp; analysis software and tools</li>
+</ul>
+
+<p>Broad range of activities carried out &amp; supported at the facilities, including:</p>
+<ul>
+  <li>Event generation, detector simulation with ATLAS or standalone software</li>
+  <li>Data movement (via R2D2) and access (using Xcache)</li>
+  <li>Data processing for analysis &amp; statistics using ATLAS software in CVMFS</li>
+  <li>Graphical applications for example via X-windows</li>
+  <li>Software development, testing code before submitting to batch system or Panda</li>
+  <li>Supported for Run 3 but also allow for R&amp;D for the future</li>
+</ul>
+
 <blockquote class="callout">
-  <h2 id="number-of-gpu-instances">Number of GPU instances</h2>
+  <h2 id="software--computing-resources">Software &amp; Computing Resources</h2>
+  <ul>
+    <li>Resources that fill gaps between grid jobs and interactive analysis on local computers</li>
+    <li>ssh access and HTCondor batch</li>
+    <li>Simple Jupyter notebook scheduling to CPU and GPU</li>
+    <li>Coffea-Casa, ServiceX (IRIS-HEP tools for columnar analysis)</li>
+    <li>Interactive access: interactive nodes, containers, node flavors</li>
+    <li>Processing interfaces: HTCondor access, shared endpoint.</li>
+    <li>~1000 cores co-located and close integration with  MWT2. ~1 petabyte of storage</li>
+    <li>Users start with: 5TB $DATA, 100GB $HOME, 1500 shared CPU cores, shared GPUs.</li>
+  </ul>
+</blockquote>
+
+<p><img src="./../fig/i_aboutpage.png" alt="image info" /></p>
+
+<blockquote class="callout">
+  <h2 id="contact-info">Contact info</h2>
 
   <ul>
     <li>
-      <p>The AF cluster has four NVIDIA A100 GPUs.</p>
+      <p>Join our  <a href="https://atlas-talk.sdcc.bnl.gov/"> US-ATLAS Discourse Forum</a> for help, questions, comments, user support, newsletter and more!.</p>
     </li>
     <li>
-      <p>GPU partitioned into -&gt; seven GPU instances.</p>
+      <p>Check the <a href="https://usatlas.readthedocs.io/projects/af-docs/en/latest/">public documentation for US-ATLAS Analysis Facilities</a></p>
     </li>
     <li>
-      <p>AF cluster can have up to 28 GPU instances running in parallel.</p>
-    </li>
-    <li>
-      <p><strong>You can select anywhere from 0 to 7 GPU instances as resources for the notebook.</strong></p>
+      <p>Besides the user support platforms for questions and comments, you can send an email to mduranosuna@niu.edu</p>
     </li>
   </ul>
-
 </blockquote>
-
-<p>Selecting Docker image</p>
-<blockquote class="callout">
-  <h2 id="2-image-options">2 image options</h2>
-
-  <ul>
-    <li>
-      <p>1: full anaconda (ivukotic/ml_platform:conda)</p>
-    </li>
-    <li>
-      <p>2: NVidia GPU and ROOT support (ivukotic/ml_platform:latest)</p>
-      <ul>
-        <li>This one has ML packages (Tensorflow, Keras, ScikitLearn,…) preinstalled, check /ML_platform_tests tutorial</li>
-      </ul>
-    </li>
-  </ul>
-
-</blockquote>
-
-<p>For software additions and upgrades please contact ivukotic@uchicago.edu</p>
-
-<p>Selecting GPU memory</p>
-
-<p>Select 40,836 MB for an entire A100 GPU. Select 4864 MB for a MIG instance.</p>
-
-<p>You can learn more about in its  <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab</a> documentation link</p>
 
 
 
@@ -286,7 +291,7 @@
   <h2>Key Points</h2>
   <ul>
     
-    <li><p>Check JupyterLab documentation</p>
+    <li>
 </li>
     
   </ul>
@@ -308,7 +313,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-coffea_casa/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../02-accountrequest/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
       
     </h3>
   </div>

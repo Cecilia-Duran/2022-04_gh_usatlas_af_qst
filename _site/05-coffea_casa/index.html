@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2022-08-01 15:46:25 -0500">
+    <meta http-equiv="last-modified" content="2022-08-02 19:26:10 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -49,7 +49,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-    <title>Quickstart Tutorial: JupyterLab</title>
+    <title>Quickstart Tutorial: Coffea Casa</title>
   </head>
   <body>
 
@@ -104,15 +104,17 @@
           <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="../01-uchicago/index.html">UChicago</a></li>
+            <li><a href="../01-uchicago/index.html">UChicago Analysis Facility</a></li>
             
-            <li><a href="../02-coffea_casa/index.html">Coffea Casa</a></li>
+            <li><a href="../02-accountrequest/index.html">Account Request & Login via SSH</a></li>
             
-            <li><a href="../03-coffea_casa_servicex/index.html">Coffe Casa ServiceX</a></li>
+            <li><a href="../03-atlasenv/index.html">Atlas environment</a></li>
             
-            <li><a href="../03-htcondor/index.html">HTCondor</a></li>
+            <li><a href="../04-htcondor/index.html">HTCondor</a></li>
             
-            <li><a href="../04-jupyter_lab/index.html">JupyterLab</a></li>
+            <li><a href="../05-coffea_casa/index.html">Coffea Casa</a></li>
+            
+            <li><a href="../05-jupyter_lab/index.html">JupyterLab</a></li>
             
             <li><a href="../07-goodpractices/index.html">Good practices</a></li>
             
@@ -146,7 +148,7 @@
 	
         <li><a href="../LICENSE.html">License</a></li>
 	
-	<li><a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/04-jupyter_lab.md">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	<li><a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/05-coffea_casa.md">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
 	
       </ul>
       <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
@@ -163,7 +165,7 @@
   <div class="col-xs-1">
     <h3 class="text-left">
       
-      <a href="../03-htcondor/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      <a href="../04-htcondor/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
       
     </h3>
   </div>
@@ -175,7 +177,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../07-goodpractices/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../05-jupyter_lab/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
       
     </h3>
   </div>
@@ -186,7 +188,7 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-10">
-    <h1 class="maintitle">JupyterLab</h1>
+    <h1 class="maintitle">Coffea Casa</h1>
   </div>
   <div class="col-md-1">
   </div>
@@ -206,7 +208,7 @@
       <strong>Questions</strong>
       <ul>
 	
-	<li><p>What is JupyterLab?</p>
+	<li><p>What is Coffea Casa?</p>
 </li>
 	
       </ul>
@@ -220,7 +222,7 @@
       <strong>Objectives</strong>
       <ul>
 	
-	<li><p>Learn: number of GPU instances, selecting a Docker image and GPU memory</p>
+	<li><p>Learn the prerequisites for using Coffea Casa</p>
 </li>
 	
       </ul>
@@ -229,56 +231,150 @@
 
 </blockquote>
 
-<p>Users can deploy one or more private JupyterLab applications.</p>
+<!--
+> ## About Coffea Casa
+>
+> - <a href="#prerequisites">Prerequisites</a>
+>
+> - <a href="#access">Access</a>
+>
+> - <a href="#authz">Atlas AuthZ authentication</a> 
+>
+> - <a href="#docker">Docker</a>
+>
+> - <a href="#cluster">Cluster resources</a>
+>
+> - <a href="#open">Open a new console or file</a>
+>
+> - <a href="#git">Using git</a>
+>
+{: .callout}-->
 
-<p>To encourage fair sharing these applications are time limited.</p>
+<h1 id="about-coffea-casa">About Coffea Casa</h1>
+<p>Coffea-Casa -  Is a Prototype of an Analysis Facility for Columnar Object Framework For Effective Analy (Coffea). Provides services for “low latency columnar analysis” based on Dask and Jupyter.
+It lowes time for analysis providing a user-friendly computational environment that simplifies and accelerates the delivery of HEP results.</p>
 
-<h2 id="selecting-a-number-of-gpu-instances">Selecting a number of GPU instances</h2>
 <blockquote class="callout">
-  <h2 id="number-of-gpu-instances">Number of GPU instances</h2>
+
+  <p>Deployed via Fluxcd</p>
+
+  <p>Docker images served from OSG Harbor</p>
+
+  <p>User authentication via Indico IAM for Atlas</p>
+
+</blockquote>
+
+<p><img src="./../fig/i_c1draft.png" alt="image info" width="700" /></p>
+
+<blockquote class="callout">
+  <h2 id="documentation-sources">Documentation sources</h2>
 
   <ul>
     <li>
-      <p>The AF cluster has four NVIDIA A100 GPUs.</p>
+      <p>Documentation  <a href="https://coffea-casa.readthedocs.io/en/latest/#">coffea-casa readthedocs</a></p>
     </li>
     <li>
-      <p>GPU partitioned into -&gt; seven GPU instances.</p>
+      <p>Coffea <a href="https://coffeateam.github.io/coffea/">documentation</a></p>
     </li>
     <li>
-      <p>AF cluster can have up to 28 GPU instances running in parallel.</p>
+      <p>Check this <a href="https://github.com/CoffeaTeam/coffea-casa-tutorials">tutorial on columnar analysis in coffea</a></p>
     </li>
     <li>
-      <p><strong>You can select anywhere from 0 to 7 GPU instances as resources for the notebook.</strong></p>
+      <p>Are you familiar with Python, Jupyter Notebooks, JupyterLab interface?</p>
+      <blockquote>
+
+        <ul>
+          <li>
+            <p><a href="https://docs.python.org/3/tutorial/"> python tutorial </a></p>
+          </li>
+          <li>
+            <p><a href="https://jupyter.org/"> jupyter notebook documentation </a></p>
+          </li>
+          <li>
+            <p><a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html"> JupyterLab interface<a></a></a></p>
+          </li>
+        </ul>
+
+      </blockquote>
     </li>
   </ul>
 
 </blockquote>
 
-<p>Selecting Docker image</p>
+<h2 id="access">Access</h2>
+
+<p><a href="https://coffea.af.uchicago.edu">access point to the Coffea-Casa Analysis Facility at UChicago</a></p>
+
+<p><img src="./../fig/coffea_access.png" alt="image info" width="700" /></p>
+
+<h2 id="authz">Atlas AuthZ authentication</h2>
+
+<p><img src="./../fig/coffea_authz.png" alt="image info" width="700" /></p>
+
+<p><img src="./../fig/coffea_authz2.png" alt="image info" width="700" /></p>
+
+<h2 id="docker">Docker</h2>
+
+<p><img src="./../fig/coffea_docker.png" alt="image info" width="700" />
+<img src="./../fig/coffea_docker2.png" alt="image info" width="700" /></p>
+
+<h2 id="cluster">Cluster resources</h2>
+
+<p><img src="./../fig/coffea_resources.png" alt="image info" width="600" />
+<img src="./../fig/coffea_resources2.png" alt="image info" width="600" /></p>
+
+<h2 id="open">Open a new console or file</h2>
+
+<p><img src="./../fig/coffea_new.png" alt="image info" width="600" /> 
+<img src="./../fig/coffea_new2.png" alt="image info" width="700" /></p>
+
+<h2 id="git">Using git</h2>
+
+<p><img src="./../fig/coffea_git.png" alt="image info" width="600" /> 
+<img src="./../fig/coffea_git2.png" alt="image info" width="600" /> 
+<img src="./../fig/coffea_git3.png" alt="image info" width="600" /></p>
+
+<h1 id="coffea-casa-servicex">Coffea-Casa ServiceX</h1>
+
 <blockquote class="callout">
-  <h2 id="2-image-options">2 image options</h2>
+  <h2 id="about-servicex">About ServiceX</h2>
 
   <ul>
     <li>
-      <p>1: full anaconda (ivukotic/ml_platform:conda)</p>
+      <p><a href="#servicex">ServiceX</a></p>
     </li>
     <li>
-      <p>2: NVidia GPU and ROOT support (ivukotic/ml_platform:latest)</p>
-      <ul>
-        <li>This one has ML packages (Tensorflow, Keras, ScikitLearn,…) preinstalled, check /ML_platform_tests tutorial</li>
-      </ul>
+      <p><a href="#columnar">Check this examples!! (please)</a></p>
     </li>
   </ul>
 
 </blockquote>
 
-<p>For software additions and upgrades please contact ivukotic@uchicago.edu</p>
+<p>ServiceX, a component of the IRIS-HEP Intelligent Data Delivery Service, is an experiment-agnostic service to enable on-demand columnar data delivery tailored for interactive, array-based Pythonic analyses. It provides an interface to data storage services and frontend for users to enable columnar transformations.</p>
 
-<p>Selecting GPU memory</p>
+<p>Columnar data delivery</p>
 
-<p>Select 40,836 MB for an entire A100 GPU. Select 4864 MB for a MIG instance.</p>
+<p>ServiceX seeks to enable on-demand data delivery of columnar data in a variety of formats for physics analyses. It provides a uniform backend to data storage services, ensuring the user doesn’t have to know how or where the data is stored, and is capable of on-the-fly data transformations into a variety of formats (ROOT files, Arrow arrays, Parquet files, …) The service offers preprocessing functionality via an analysis description language called func-adl that allows users to filter events, request columns, and even compute new variables. This enables the user to start from any format and extract only the data needed for an analysis.</p>
 
-<p>You can learn more about in its  <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab</a> documentation link</p>
+<h2 id="servicex">ServiceX</h2>
+<p><img src="./../fig/servicex_1workflow.png" alt="image info" width="700" />
+<img src="./../fig/servicex_2globus.png" alt="image info" width="700" />
+<img src="./../fig/servicex_3dash.png" alt="image info" width="700" />
+<img src="./../fig/servicex_4profile.png" alt="image info" width="700" /></p>
+
+<h2 id="columnar">Check this examples!! ( please (ꈍ◡ꈍ ) )</h2>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/nikoladze/agc-tools-workshop-2021-physlite">Columnar data analysis with DAOD_PHYSLITE example</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/iris-hep/analysis-grand-challenge/blob/main/workshops/agctools2021/HZZ_analysis_pipeline/HZZ_analysis_pipeline.ipynb">Example analysis using ServiceX and Coffea</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/kyungeonchoi/ServiceX-at-IRIS-HEP-ACG-workshop-2021">ServiceX analysis on ROOT files with Coffea and TRExFitter</a></p>
+  </li>
+</ul>
 
 
 
@@ -286,7 +382,7 @@
   <h2>Key Points</h2>
   <ul>
     
-    <li><p>Check JupyterLab documentation</p>
+    <li><p>Remember to visit the above additional resources for python, Jupyter Notebooks and JupyterLab if you need to learn more about with how they work or in case of any doubt.</p>
 </li>
     
   </ul>
@@ -298,7 +394,7 @@
   <div class="col-xs-1">
     <h3 class="text-left">
       
-      <a href="../03-htcondor/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      <a href="../04-htcondor/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
       
     </h3>
   </div>
@@ -308,7 +404,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../07-goodpractices/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../05-jupyter_lab/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
       
     </h3>
   </div>
@@ -330,7 +426,7 @@
     </div>
     <div class="col-md-6 help-links" align="right">
 	
-	<a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/04-jupyter_lab.md">Edit on GitHub</a>
+	<a href="https://github.com/eressegu/atlas-example-workflow/edit/gh-pages/_episodes/05-coffea_casa.md">Edit on GitHub</a>
 	
 	/
 	<a href="https://github.com/eressegu/atlas-example-workflow/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
