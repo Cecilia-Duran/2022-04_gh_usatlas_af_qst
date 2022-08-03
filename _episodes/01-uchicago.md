@@ -15,7 +15,7 @@ keypoints:
 
 US ATLAS has three shared Tier 3 analysis facilities providing software & computing resources, one of the most recent is located at The University of Chicago and was pre-launched in October 2021.
 
-**<center> Funded by NSF and co-located with MWT2-UC </center>**
+**<center> Funded by NSF (Natural Science Foundation) and co-located with MWT2-UC </center>**
 
 ![image info](./../fig/i_sharedtier3.png)
 
