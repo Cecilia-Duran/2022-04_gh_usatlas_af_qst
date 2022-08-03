@@ -119,8 +119,14 @@ ServiceX seeks to enable on-demand data delivery of columnar data in a variety o
 
 <h2 id="servicex">ServiceX</h2>
 ![image info](./../fig/servicex_1workflow.png){:width="700"}
+  
+To use them one has to register and get approved. Sign in will lead you to a Globus registration page, where you may choose to use the account connected to your institution.
 ![image info](./../fig/servicex_2globus.png){:width="700"}
+  
+Once approved, you will be able to see the status of your requests in a dashboard.
 ![image info](./../fig/servicex_3dash.png){:width="700"}
+  
+For your code to be able to authenticate your requests, you need to download a servicex.yaml fie, that shout be placed in your working directory. The file is downloaded from your profile page:
 ![image info](./../fig/servicex_4profile.png){:width="700"}
 
 
